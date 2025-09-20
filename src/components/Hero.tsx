@@ -96,23 +96,34 @@ export default function Hero() {  const features = [
             className="relative"
           >
             <div className="relative">
-              {/* Car silhouette with animated elements */}
-              <div className="w-full h-96 bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl p-8 flex items-center justify-center">
-                <motion.div
-                  animate={{ 
-                    rotateY: [0, 10, -10, 0],
-                    scale: [1, 1.05, 1]
-                  }}
-                  transition={{ 
-                    duration: 6, 
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="text-white text-center"
-                >
-                  <Wrench className="w-24 h-24 mx-auto mb-4" />                  <h3 className="text-2xl font-bold mb-2">Ekspercki Serwis</h3>
-                  <p className="text-orange-100">Profesjonalni mechanicy, którym możesz zaufać</p>
-                </motion.div>
+              {/* Hero Image */}
+              <div className="w-full h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl overflow-hidden relative">
+                {/* Placeholder for mechanic working image */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <motion.div
+                      animate={{ 
+                        rotateY: [0, 10, -10, 0],
+                        scale: [1, 1.05, 1]
+                      }}
+                      transition={{ 
+                        duration: 6, 
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Wrench className="w-24 h-24 mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold mb-2">Ekspercki Serwis</h3>
+                      <p className="text-gray-300">Profesjonalni mechanicy, którym możesz zaufać</p>
+                    </motion.div>
+                  </div>
+                </div>
+                <img 
+                  src="/images/mechanic-working.jpg" 
+                  alt="Mechanic working on car engine"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Floating elements */}

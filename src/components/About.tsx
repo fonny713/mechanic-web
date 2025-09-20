@@ -87,6 +87,38 @@ export default function About() {  const stats = [
           ))}
         </motion.div>
 
+        {/* Workshop Image Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-20"
+        >
+          <div className="relative h-96 rounded-3xl overflow-hidden">
+            {/* Placeholder for workshop image */}
+            <div className="w-full h-full bg-gradient-to-r from-gray-800 to-gray-900 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-orange-600/20" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <Users className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                  <p className="text-xl">Nasz profesjonalny warsztat</p>
+                </div>
+              </div>
+            </div>
+            <img 
+              src="/images/workshop-interior.jpg" 
+              alt="ProAuto Serwis workshop interior"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute bottom-8 left-8 text-white">
+              <h3 className="text-2xl font-bold mb-2">Nowoczesny warsztat</h3>
+              <p className="text-gray-200">Wyposażony w najnowszy sprzęt diagnostyczny</p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Left Side - Story */}

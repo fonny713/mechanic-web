@@ -19,6 +19,7 @@ export default function Services() {  const services = [
       description: "Regularna wymiana oleju i konserwacja zapobiegawcza, aby silnik działał płynnie.",
       features: ["Olej w pełni syntetyczny", "Wymiana filtra", "Kontrola wielopunktowa"],
       price: "Od 199 zł",
+      image: "/images/oil-change.jpg", // TODO: Add actual image
     },
     {
       icon: Cog,
@@ -26,6 +27,7 @@ export default function Services() {  const services = [
       description: "Kompleksowa diagnostyka i naprawa silnika od drobnych przeglądów po gruntowne remonty.",
       features: ["Diagnostyka silnika", "Serwis paska rozrządu", "Naprawa uszczelki głowicy"],
       price: "Od 599 zł",
+      image: "/images/engine-repair.jpg", // TODO: Add actual image
     },
     {
       icon: Zap,
@@ -33,6 +35,7 @@ export default function Services() {  const services = [
       description: "Kompleksowy serwis układu hamulcowego dla zapewnienia bezpieczeństwa na drodze.",
       features: ["Wymiana klocków hamulcowych", "Planowanie tarcz", "Serwis płynu hamulcowego"],
       price: "Od 399 zł",
+      image: "/images/brake-service.jpg", // TODO: Add actual image
     },
     {
       icon: Gauge,
@@ -40,6 +43,7 @@ export default function Services() {  const services = [
       description: "Konserwacja i naprawa skrzyni biegów, aby pojazd płynnie zmieniał biegi.",
       features: ["Płukanie skrzyni biegów", "Wymiana filtra", "Usługi odbudowy"],
       price: "Od 299 zł",
+      image: "/images/transmission.jpg", // TODO: Add actual image
     },
     {
       icon: Fan,
@@ -47,6 +51,7 @@ export default function Services() {  const services = [
       description: "Serwis systemu klimatyzacji, aby zapewnić komfort przez cały rok.",
       features: ["Doładowanie klimatyzacji", "Naprawa sprężarki", "Serwis nagrzewnicy"],
       price: "Od 249 zł",
+      image: "/images/ac-service.jpg", // TODO: Add actual image
     },
     {
       icon: Wrench,
@@ -54,6 +59,7 @@ export default function Services() {  const services = [
       description: "Kompleksowe usługi naprawy samochodów dla wszystkich marek i modeli.",
       features: ["Diagnostyka elektryczna", "Naprawa zawieszenia", "Serwis układu wydechowego"],
       price: "Wycena na życzenie",
+      image: "/images/general-repair.jpg", // TODO: Add actual image
     },
   ];
 
@@ -85,35 +91,52 @@ export default function Services() {  const services = [
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2"
             >
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-white" />
+              {/* Service Image */}
+              <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-orange-600/20" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <service.icon className="w-16 h-16 text-white opacity-50" />
                 </div>
-                <div className="ml-4">
-                  <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
-                  <p className="text-orange-500 font-semibold">{service.price}</p>
-                </div>
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
 
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {service.description}
-              </p>
+              <div className="p-8">
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
+                    <p className="text-orange-500 font-semibold">{service.price}</p>
+                  </div>
+                </div>
 
-              <ul className="space-y-2 mb-6">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-3" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>              <Button 
-                className="w-full bg-gray-900 hover:bg-orange-500 text-white group-hover:bg-orange-500 transition-all duration-300"
-              >
-                Dowiedz się więcej
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-              </Button>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mr-3" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Button 
+                  className="w-full bg-gray-900 hover:bg-orange-500 text-white group-hover:bg-orange-500 transition-all duration-300"
+                >
+                  Dowiedz się więcej
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                </Button>
+              </div>
             </motion.div>
           ))}
         </div>
